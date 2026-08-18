@@ -1,6 +1,6 @@
 # Internal Support and Issue Management Platform
 
-![Quality Checks](https://github.com/AishwaryaToragalli/Internal-Support-and-Issue-Management-Platform/github/workflows/quality.yml/badge.svg)
+![Quality Checks](https://github.com/AishwaryaToragalli/Internal-Support-and-Issue-Management-Platform/.github/workflows/quality.yml/badge.svg)
 
 # Internal Support and Issue Management Platform
 
