@@ -1,5 +1,10 @@
 # Internal Support and Issue Management Platform
 
+![Quality Checks](https://github.com/AishwaryaToragalli/Internal-Support-and-Issue-Management-Platform/.
+github/workflows/quality.yml/badge.svg)
+
+# Internal Support and Issue Management Platform
+
 ## Overview
 
 A Python-based internal support platform for creating, assigning,
