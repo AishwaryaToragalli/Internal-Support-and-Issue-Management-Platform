@@ -2,13 +2,14 @@ from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
-
+from app.auth_dependencies import get_current_user
 from app import crud
 from app.database import get_db
 from app.schemas import TicketCreate
 from app.schemas import TicketResponse
 from app.schemas import TicketUpdate
 from app.services import TicketService
+from app.auth_dependencies import require_roles
 
 router = APIRouter(
     prefix="/tickets",
@@ -77,7 +78,8 @@ def list_tickets(
 )
 def get_ticket(
     ticket_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user)
 ):
     ticket = crud.get_ticket(db, ticket_id)
 
@@ -97,7 +99,8 @@ def get_ticket(
 def update_ticket(
     ticket_id: int,
     ticket_data: TicketUpdate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user=Depends(require_roles("agent", "manager", "admin"))
 ):
     if ticket_data.status:
         try:
