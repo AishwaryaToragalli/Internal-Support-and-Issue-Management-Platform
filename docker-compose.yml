@@ -1,0 +1,27 @@
+services:
+  api:
+    build: .
+    container_name: internal_support_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: mysql+pymysql://support_user:support_password@mysql:3306/support_db
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: internal_support_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: support_db
+      MYSQL_USER: support_user
+      MYSQL_PASSWORD: support_password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - support_mysql_data:/var/lib/mysql
+
+volumes:
+  support_mysql_data:
