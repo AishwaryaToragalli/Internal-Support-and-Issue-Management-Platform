@@ -30,4 +30,8 @@ jobs:
         run: python -m flake8 app tests
 
       - name: Run PyTest
-        run: python -m pytest -v
+        env:
+          DATABASE_URL:sqlite:///./test.db
+          SECRET_KEY: temporary_secret_key_for_testing
+        run: |
+          pytest
